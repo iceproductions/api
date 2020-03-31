@@ -1,5 +1,5 @@
 type Query {
-
+    hello: String
 }
 
 type User {
@@ -21,7 +21,7 @@ type Message {
     channel: Channel!,
     content: String!,
     reactions: [String!],
-    
+
 }
 
 schema {
