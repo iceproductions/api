@@ -50,9 +50,47 @@ type Guild {
     owner: User,
     channels: [Channel!]!,
     users: [User!]!,
+    settings: GuildSettings,
 
     channel(id: Int!): Channel,
     user(id: Int!): User
+}
+
+type GuildSettings {
+    allowedChannels: [Channel!],
+    cases: [Case!]!,
+    disabledCommands: [Command!]!,
+}
+
+type Command {
+    name: String!,
+    group: String!,
+    description: String!,
+    aliases: [String!]!,
+    usage: String,
+
+    arguments: [Argument!]!
+}
+
+type Argument {
+    type: String!,
+    prompt: String!,
+    default: String,
+    key: String!,
+    infinite: Boolean!
+}
+
+type Case {
+    mod: SimpleUser!,
+    user: SimpleUser!,
+    reason: String!,
+    deleted: Boolean!,
+}
+
+type SimpleUser {
+    user: User,
+    id: Int!,
+    name: String!
 }
 
 type Message {
