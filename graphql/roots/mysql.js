@@ -1,4 +1,4 @@
 const config = require("../../config.json").mysql;
-const Mysql = require("mysql");
+const mysql = require("mysql");
 
-module.exports = new Mysql(config);
+module.exports = mysql.createPool(config);
