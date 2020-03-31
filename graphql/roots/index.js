@@ -1,5 +1,9 @@
 module.exports = {
-    hello: () => {
-        return "Hello world!";
+    info: () => {
+        return {
+            version: {
+                string: "v0.1.0"
+            }
+        };
     }
 };
