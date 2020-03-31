@@ -1,0 +1,29 @@
+type Query {
+
+}
+
+type User {
+
+}
+
+type Channel {
+
+}
+
+type Guild {
+
+}
+
+type Message {
+    author: User,
+    embed: Boolean!,
+    webhook: Boolean!,
+    channel: Channel!,
+    content: String!,
+    reactions: [String!],
+    
+}
+
+schema {
+    query: Query
+}
