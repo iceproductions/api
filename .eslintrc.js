@@ -23,5 +23,19 @@ module.exports = {
       named: "never",
       asyncArrow: "always"
     }],
+    "keyword-spacing": ["error", {
+      before: false,
+      after: false,
+      overrides: {
+        else: {
+          before: true,
+          after: true
+        },
+        return: {
+          before: true,
+          after: true
+        }
+      }
+    }]
   }
 }
