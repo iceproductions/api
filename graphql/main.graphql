@@ -19,7 +19,7 @@ type ServerInfo {
     version: Semver!,
     contributors: [Contributor!],
     repository: String!,
-    status: BotStatus,
+    status: BotStatus!,
 
     contributor(nickname: String): Contributor,
 }
