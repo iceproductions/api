@@ -3,25 +3,25 @@ type Query {
 }
 
 type User {
-
+    id: String
 }
 
 type Channel {
-
+    id: String
 }
 
 type Guild {
-
+    id: String
 }
 
 type Message {
+    id: String,
     author: User,
     embed: Boolean!,
     webhook: Boolean!,
     channel: Channel!,
     content: String!,
     reactions: [String!],
-
 }
 
 schema {
