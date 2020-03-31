@@ -1,27 +1,116 @@
 type Query {
-    hello: String
+    info: ServerInfo!,
+    guild(id: Int!): Guild,
+}
+
+type ServerInfo {
+    version: Semver!,
+    contributors: [Contributor!],
+    repository: String!,
+    status: BotStatus,
+
+    contributor(nickname: String): Contributor,
+}
+
+type Contributor {
+    avatar: String!,
+    nickname: String!,
+    name: String
+}
+
+type Semver {
+    string: String!,
+    major: Int!,
+    minor: Int!,
+    path: Int!,
+    channel: UpdateChannel!
 }
 
 type User {
-    id: String
+    id: String!,
+    nickname: String!,
+    tag: String!,
+    guilds: [Guild!]!,
+
+    guild(id: Int!): Guild
 }
 
 type Channel {
-    id: String
+    id: String!,
+    position: Int,
+    guild: Guild,
+    type: ChannelType!,
+
+    messages: [Message!],
+    message(id: Int!): Message,
 }
 
 type Guild {
-    id: String
+    id: String!,
+    owner: User,
+    channels: [Channel!]!,
+    users: [User!]!,
+
+    channel(id: Int!): Channel,
+    user(id: Int!): User
 }
 
 type Message {
-    id: String,
+    id: String!,
     author: User,
-    embed: Boolean!,
     webhook: Boolean!,
     channel: Channel!,
+    guild: Guild,
     content: String!,
     reactions: [String!],
+    embeds: [Embed!],
+}
+
+type Embed {
+    message: Message,
+    author: User,
+    channel: Channel,
+
+    title: String,
+    description: String,
+    embedAuthor: EmbedAuthor!,
+    fields: [EmbedField!]!,
+    footer: String,
+    thumbnail: String,
+    image: String
+}
+
+type EmbedField {
+    title: String!,
+    content: String!,
+    inline: Boolean!,
+}
+
+type EmbedAuthor {
+    link: String,
+    name: String,
+    avatar: String
+}
+
+
+enum ChannelType {
+    DM,
+    Text,
+    Voice,
+    Video,
+    News
+}
+
+enum BotStatus {
+    offline,
+    running,
+    updating
+}
+
+enum UpdateChannel {
+    alpha,
+    beta,
+    release
 }
 
 schema {
