@@ -6,5 +6,8 @@ module.exports = {
     info: () => {
         return new ServerInfo(client);
     },
-    commands: CommandList
+    commands: CommandList,
+    command: ({ name }) => {
+        return CommandList.filter(c => c.name === name)[0];
+    }
 };
