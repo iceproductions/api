@@ -17,12 +17,15 @@ module.exports = {
   rules: {
     quotes: ["error", "double"],
     semi: ["error", "always"],
-    indent: ["error", 4],
     "space-before-function-paren": ["error", {
       anonymous: "never",
       named: "never",
       asyncArrow: "always"
     }],
+    indent: ["error", 4, {
+      SwitchCase: 1
+    }],
+    "no-async-promise-executor": ["off"],
     "keyword-spacing": ["error", {
       before: false,
       after: false,
@@ -34,6 +37,12 @@ module.exports = {
         return: {
           before: true,
           after: true
+        },
+        try: {
+          after: true
+        },
+        catch: {
+          before: true
         }
       }
     }]
