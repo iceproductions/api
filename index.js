@@ -15,6 +15,16 @@ app.use("/v1", graphql({
     graphiql: true
 }));
 
+app.get("/", (req, res) => {
+    res.redirect("/v1");
+});
+
+app.get("/version", (req, res) => {
+    req.json({
+        version: "v1"
+    });
+});
+
 app.listen(PORT, () => {
     console.log("Ready");
 });
