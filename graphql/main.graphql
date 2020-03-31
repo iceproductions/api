@@ -1,11 +1,18 @@
 type Query {
-    info: ServerInfo!,
+    # Shows info about the API server
+    info: ServerInfo!, #done
 
-    commands: [Command!],
+    # Lists all commands
+    commands: [Command!], #done
 
+    # Gets a guild by its ID, returns NULL if bot isn't in the guild
     guild(id: Int!): Guild,
+    
+    # Gets user by his ID, returns NULL if bot doesn't see the user
     user(id: Int!): User,
-    command(name: String!): Command
+
+    # Gets command by its name, returns NULL if command doesn't exist
+    command(name: String!): Command #done
 }
 
 type ServerInfo {
