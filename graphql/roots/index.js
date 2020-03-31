@@ -1,9 +1,8 @@
+const ServerInfo = require("./dataHolders/ServerInfo");
+const client = require("./mysql");
+
 module.exports = {
     info: () => {
-        return {
-            version: {
-                string: "v0.1.0"
-            }
-        };
+        return new ServerInfo(client);
     }
 };
