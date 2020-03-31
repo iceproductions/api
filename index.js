@@ -10,7 +10,7 @@ const root = require("./graphql/roots/");
 const PORT = 8855;
 
 app.use("/v1", graphql({
-    schema: buildSchema(fs.readFileSync(path.join(__dirname, "./graphql/main.graphql"))),
+    schema: buildSchema(fs.readFileSync(path.join(__dirname, "./graphql/main.graphql"), "utf-8")),
     rootValue: root,
     graphiql: true
 }));
