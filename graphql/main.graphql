@@ -1,6 +1,11 @@
 type Query {
     info: ServerInfo!,
+
+    commands: [Command!],
+
     guild(id: Int!): Guild,
+    user(id: Int!): User,
+    command(name: String!): Command
 }
 
 type ServerInfo {
