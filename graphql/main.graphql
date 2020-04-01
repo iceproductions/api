@@ -34,7 +34,7 @@ type Semver {
     string: String!,
     major: Int!,
     minor: Int!,
-    path: Int!,
+    patch: Int!,
     channel: UpdateChannel!
 }
 
