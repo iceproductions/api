@@ -5,9 +5,18 @@ class Argument {
             "type", "prompt", "default", "key", "infinite"
         ];
 
-        for(var key in data) {
+        for(const key in data) {
             if(!argumentProps.includes(key))continue;
             this[key] = data[key];
+        }
+
+        for(const key in argumentProps){
+            if(!this[key])
+                if(key == "infinite"){
+                    this[key] = false;
+                } else {
+                    this[key] = "";
+                }
         }
     }
 }
