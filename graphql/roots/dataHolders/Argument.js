@@ -10,9 +10,9 @@ class Argument {
             this[key] = data[key];
         }
 
-        for(const key of argumentProps){
-            if(!this[key]){
-                if(key == "infinite"){
+        for(const key of argumentProps) {
+            if(!this[key]) {
+                if(key === "infinite") {
                     this[key] = false;
                 } else {
                     this[key] = "";
