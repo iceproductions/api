@@ -1,4 +1,5 @@
 const got = require("got");
+const Emoji = require("./Emoji");
 
 module.exports = class Guild {
     constructor(id) {
@@ -61,8 +62,9 @@ module.exports = class Guild {
         return this.getProperty("description");
     }
 
-    get emojis() {
-        return this.getProperty("emojis");
+    async emojis() {
+        var emojis = this.getProperty("emojis");
+        return emojis.map(emoji => new Emoji(emoji));
     }
 
     get created() {
