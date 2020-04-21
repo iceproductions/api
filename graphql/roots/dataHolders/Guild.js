@@ -63,7 +63,7 @@ module.exports = class Guild {
     }
 
     async emojis() {
-        var emojis = this.getProperty("emojis");
+        var emojis = await this.getProperty("emojis");
         return emojis.map(emoji => new Emoji(emoji));
     }
 
