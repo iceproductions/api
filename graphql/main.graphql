@@ -6,10 +6,10 @@ type Query {
     commands: [Command!], #done
 
     # Gets a guild by its ID, returns NULL if bot isn't in the guild
-    guild(id: Int!): Guild,
+    guild(id: String!): Guild,
     
     # Gets user by his ID, returns NULL if bot doesn't see the user
-    user(id: Int!): User,
+    user(id: String!): User,
 
     # Gets command by its name, returns NULL if command doesn't exist
     command(name: String!): Command #done
@@ -45,7 +45,7 @@ type User {
     tag: String!,
     guilds: [Guild!]!, # max 100
 
-    guild(id: Int!): Guild
+    guild(id: String!): Guild
 }
 
 type Channel {
@@ -55,7 +55,7 @@ type Channel {
     type: ChannelType!,
 
     #messages: [Message!],
-    message(id: Int!): Message,
+    message(id: String!): Message,
 }
 
 type Guild {
@@ -66,8 +66,8 @@ type Guild {
     #users: [User!]!,
     settings: GuildSettings,
 
-    channel(id: Int!): Channel,
-    user(id: Int!): User
+    channel(id: String!): Channel,
+    user(id: String!): User
 }
 
 type GuildSettings {
