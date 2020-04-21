@@ -4,18 +4,6 @@ module.exports = class Guild {
     constructor(id) {
         this.id = id;
     }
-    /*
-    type Guild {
-        id: String!,
-        owner: User,
-        channels: [Channel!]!,
-        userLength: Int!,
-        settings: GuildSettings,
-
-        channel(id: Int!): Channel,
-        user(id: Int!): User
-    }
-    */
 
     async fetchGuild() {
         if(!this.guild) {
@@ -25,11 +13,22 @@ module.exports = class Guild {
         return this.guild;
     }
 
-    get owner() {
-
+    async getProperty(prop) {
+        return (await this.fetchGuild())[prop];
     }
 
-    get channels() {
+    async icon() {
+        var guild = await this.fetchGuild();
+        return guild.iconURL;
+    }
+
+    async owner() {
+        var guild = await this.fetchGuild();
+        var { ownerID } = guild;
+        return ownerID;
+    }
+
+    async channels() {
 
     }
 
@@ -38,8 +37,36 @@ module.exports = class Guild {
         return guild.memberCount;
     }
 
-    get settings() {
+    async settings() {
 
+    }
+
+    get acronym() {
+        return this.getProperty("nameAcronym");
+    }
+
+    get splash() {
+        return this.getProperty("splashURL");
+    }
+
+    get name() {
+        return this.getProperty("name");
+    }
+
+    get banner() {
+        return this.getProperty("bannerURL");
+    }
+
+    get description() {
+        return this.getProperty("description");
+    }
+
+    get emojis() {
+        return this.getProperty("emojis");
+    }
+
+    get created() {
+        return this.getProperty("createdTimestamp");
     }
 
     channel({ id }) {
