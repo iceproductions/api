@@ -53,6 +53,9 @@ type Channel {
     position: Int,
     guild: Guild,
     type: ChannelType!,
+    nsfw: Boolean,
+    created: String!,
+    name: String,
 
     #messages: [Message!],
     message(id: String!): Message,
