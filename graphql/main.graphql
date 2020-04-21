@@ -17,11 +17,11 @@ type Query {
 
 type ServerInfo {
     version: Semver!,
-    contributors: [Contributor!],
+    contributors: [Contributor!], # not yet implemented
     repository: String!,
     status: BotStatus!,
 
-    contributor(nickname: String): Contributor,
+    contributor(nickname: String): Contributor, # not yet implemented
 }
 
 type Contributor {
@@ -43,7 +43,7 @@ type User {
     nickname: String!,
     bot: Boolean!,
     tag: String!,
-    guilds: [Guild!]!,
+    guilds: [Guild!]!, # max 100
 
     guild(id: Int!): Guild
 }
@@ -54,7 +54,7 @@ type Channel {
     guild: Guild,
     type: ChannelType!,
 
-    messages: [Message!],
+    #messages: [Message!],
     message(id: Int!): Message,
 }
 
@@ -62,7 +62,8 @@ type Guild {
     id: String!,
     owner: User,
     channels: [Channel!]!,
-    users: [User!]!,
+    userLength: Int!,
+    #users: [User!]!,
     settings: GuildSettings,
 
     channel(id: Int!): Channel,
@@ -124,7 +125,7 @@ type Embed {
 
     title: String,
     description: String,
-    embedAuthor: EmbedAuthor!,
+    embedAuthor: EmbedAuthor,
     fields: [EmbedField!]!,
     footer: String,
     thumbnail: String,
