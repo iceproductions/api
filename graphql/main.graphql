@@ -60,14 +60,25 @@ type Channel {
 
 type Guild {
     id: String!,
-    owner: User,
+    icon: String,
+    owner: User!,
     channels: [Channel!]!,
     userLength: Int!,
-    #users: [User!]!,
     settings: GuildSettings,
+    acronym: String,
+    splash: String,
+    name: String,
+    banner: String,
+    description: String,
+    emojis: [Emoji!]!,
+    created: String!,
 
     channel(id: String!): Channel,
     user(id: String!): User
+}
+
+type Emoji {
+    id: String!
 }
 
 type GuildSettings {
