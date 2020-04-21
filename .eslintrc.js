@@ -34,6 +34,9 @@ module.exports = {
           before: true,
           after: true
         },
+        var: {
+          after: true
+        },
         const: {
           after: true
         },
