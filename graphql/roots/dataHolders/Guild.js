@@ -1,3 +1,4 @@
+const got = require("got");
 
 module.exports = class Guild {
     constructor(id) {
@@ -16,6 +17,14 @@ module.exports = class Guild {
     }
     */
 
+    async fetchGuild() {
+        if(!this.guild) {
+            var data = await got("http://localhost:8856/guild/" + this.id);
+            this.guild = JSON.parse(data.body);
+        }
+        return this.guild;
+    }
+
     get owner() {
 
     }
@@ -24,8 +33,9 @@ module.exports = class Guild {
 
     }
 
-    get userLength() {
-
+    async userLength() {
+        var guild = await this.fetchGuild();
+        return guild.memberCount;
     }
 
     get settings() {
