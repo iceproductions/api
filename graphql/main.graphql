@@ -41,6 +41,7 @@ type Semver {
 type User {
     id: String!,
     nickname: String!,
+    bot: Boolean!,
     tag: String!,
     guilds: [Guild!]!,
 
